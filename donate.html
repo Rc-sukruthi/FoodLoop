@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Share surplus food with someone in your community through Food Waste Loop.">
+    <title>Donate Food | Food Waste Loop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="donate-page">
+    <header>
+        <nav class="navbar container" aria-label="Main navigation">
+            <a class="brand" href="index.html">♻️ Food Waste Loop</a>
+            <a class="back-link" href="index.html">← Back to home</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-layout">
+                <div>
+                    <p class="eyebrow">Share more. Waste less.</p>
+                    <h1>Donate Food</h1>
+                    <h2>Your extra food can make someone's day.</h2>
+                    <p class="hero-copy">Have extra food that you don't need? Don't throw it away! Share it with someone who needs a meal. Food Waste Loop makes it easier to donate surplus food and connect with people looking for food in your community.</p>
+                </div>
+                <img class="hero-image" src="donate.jpeg" alt="Community volunteers sharing donated food">
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <div class="form-heading">
+                <h2>Share your food</h2>
+                <p>Fill in the details below to list your food donation.</p>
+            </div>
+
+            <form id="donation-form">
+                <fieldset>
+                    <legend>Donor details</legend>
+                    <div class="field-grid">
+                        <div class="field">
+                            <label for="donor-name">Donor name</label>
+                            <input id="donor-name" name="donorName" type="text" autocomplete="name" required>
+                        </div>
+                        <div class="field">
+                            <label for="contact-number">Contact number</label>
+                            <input id="contact-number" name="contactNumber" type="tel" autocomplete="tel" required>
+                        </div>
+                        <div class="field full-width">
+                            <label for="email">Email address</label>
+                            <input id="email" name="email" type="email" autocomplete="email" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Food details</legend>
+                    <div class="field-grid">
+                        <div class="field">
+                            <label for="food-name">Food name</label>
+                            <input id="food-name" name="foodName" type="text" required>
+                        </div>
+                        <div class="field">
+                            <label for="food-category">Food category</label>
+                            <select id="food-category" name="foodCategory" required>
+                                <option value="" selected disabled>Select a category</option>
+                                <option>Cooked Food</option>
+                                <option>Fruits</option>
+                                <option>Vegetables</option>
+                                <option>Packaged Food</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="quantity">Quantity available</label>
+                            <input id="quantity" name="quantity" type="text" placeholder="For example, 2 containers" required>
+                        </div>
+                        <div class="field">
+                            <label for="servings">Number of people it can serve</label>
+                            <input id="servings" name="servings" type="number" min="1" step="1" required>
+                        </div>
+                        <div class="field">
+                            <label for="food-date">Preparation or expiry date</label>
+                            <input id="food-date" name="foodDate" type="date" required>
+                            <span class="hint">Choose the date that best applies to this food.</span>
+                        </div>
+                        <div class="field full-width">
+                            <label for="description">Food description</label>
+                            <textarea id="description" name="description" placeholder="Add helpful details about the food, ingredients, or storage." required></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Pickup details</legend>
+                    <div class="field-grid">
+                        <div class="field full-width">
+                            <label for="pickup-location">Pickup location</label>
+                            <input id="pickup-location" name="pickupLocation" type="text" autocomplete="street-address" required>
+                        </div>
+                        <div class="field full-width">
+                            <label for="pickup-time">Available pickup time</label>
+                            <input id="pickup-time" name="pickupTime" type="text" placeholder="For example, today between 4 and 6 PM" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <button class="submit-button" type="submit">Submit donation</button>
+                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+
+            <section class="safety" aria-labelledby="safety-heading">
+                <h2 id="safety-heading">Before you donate</h2>
+                <p>Please make sure that:</p>
+                <ul>
+                    <li>The food is fresh and suitable for consumption.</li>
+                    <li>It has been stored and handled safely.</li>
+                    <li>The preparation or expiry information is accurate.</li>
+                    <li>The quantity and pickup details are correct.</li>
+                    <li>Food that is spoiled or unsafe is never donated.</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <section class="thank-you">
+        <div class="container">
+            <h2>Every donation counts!</h2>
+            <p>A small contribution can help reduce food waste and support someone in need. Thank you for choosing to share instead of waste!</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Food Waste Loop &mdash; Share More. Waste Less. Care More.</p>
+        </div>
+    </footer>
+
+    <script>
+        const donationForm = document.querySelector("#donation-form");
+        const formStatus = document.querySelector("#form-status");
+
+        donationForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            formStatus.textContent = "Thanks for sharing! This demo doesn't send or store donation details yet.";
+        });
+    </script>
+</body>
+</html>

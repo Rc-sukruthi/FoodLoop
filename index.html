@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Food Waste Loop connects people with surplus food to people who need it. Share more, waste less, care more.">
+    <title>Food Waste Loop | Share More. Waste Less.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-page">
+    <header>
+        <nav class="navbar container" aria-label="Main navigation">
+            <a class="brand" href="#home"><span aria-hidden="true">♻️</span>Food Waste Loop</a>
+            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+            <div class="nav-links">
+                <a href="#why">Why it matters</a>
+                <a href="#how">How it works</a>
+                <a href="#ways">Get involved</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-layout">
+                    <div class="hero-content">
+                        <p class="eyebrow">Share more. Waste less.</p>
+                        <h1>Food Waste Loop</h1>
+                        <h2>Turning surplus food into shared smiles.</h2>
+                        <p class="hero-copy">Don't waste food. Share it with someone who needs it. We connect people with extra food to people looking for a meal, helping good food find a good purpose.</p>
+                        <div class="button-row">
+                            <a class="button" href="donate.html">Donate Food</a>
+                            <a class="button secondary" href="#organisations">For Organisations</a>
+                        </div>
+                    </div>
+                    <img class="hero-image" src="home.png" alt="Illustration of community members sharing donated food">
+                </div>
+            </div>
+        </section>
+
+        <section id="why">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">A little sharing goes a long way</p>
+                    <h2>Every meal deserves a purpose</h2>
+                    <p>Food waste is a growing problem, while many people struggle to access regular meals. Food Waste Loop makes sharing surplus food easier, quicker and more accessible.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how" class="ways">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Simple as 1, 2, 3</p>
+                    <h2>How does it work?</h2>
+                    <p>Good food can make a difference when we bring our community together.</p>
+                </div>
+                <div class="steps">
+                    <article class="step">
+                        <span class="step-number">1</span>
+                        <h3>Share your food</h3>
+                        <p>Have extra food? Share its details, including the food type, quantity and pickup information.</p>
+                    </article>
+                    <article class="step">
+                        <span class="step-number">2</span>
+                        <h3>Find available food</h3>
+                        <p>People looking for food can explore available donations and find what they need.</p>
+                    </article>
+                    <article class="step">
+                        <span class="step-number">3</span>
+                        <h3>Connect and collect</h3>
+                        <p>Donors and receivers coordinate a suitable time and place for collection.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="ways">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Be part of the change</p>
+                    <h2>Food sharing starts nearby</h2>
+                </div>
+                <div class="action-cards">
+                    <article class="action-card" id="donate">
+                        <span class="card-icon" aria-hidden="true">🍱</span>
+                        <h3>Donate food</h3>
+                        <p>Have extra food that is still safe to eat? Share it instead of throwing it away.</p>
+                        <a class="button" href="donate.html">Donate now</a>
+                    </article>
+                    <article class="action-card" id="organisations">
+                        <span class="card-icon" aria-hidden="true">🤝</span>
+                        <h3>Find organisations near you</h3>
+                        <p>Search by your city or area to find community organisations supporting people nearby.</p>
+                        <form class="location-search" id="location-search">
+                            <label for="location">Your city or area</label>
+                            <input id="location" name="location" type="text" placeholder="For example, Mysuru" autocomplete="address-level2" required>
+                            <button class="button secondary" type="submit">Search nearby</button>
+                        </form>
+                        <button class="location-button" id="use-location" type="button">Use my location</button>
+                        <p class="location-status" id="location-status" role="status" aria-live="polite"></p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission">
+            <div class="container">
+                <p class="eyebrow">Our mission</p>
+                <h2>Food should be valued, not wasted.</h2>
+                <p>Through sharing and community participation, we can create a more responsible and caring food system. A little sharing can make a big difference.</p>
+                <a class="button" href="#ways">Join the Food Waste Loop</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Food Waste Loop &mdash; Share More. Waste Less. Care More.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        });
+
+        navLinks.addEventListener("click", function (event) {
+            if (event.target.closest("a")) {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+            }
+        });
+
+        const locationSearch = document.querySelector("#location-search");
+        const locationInput = document.querySelector("#location");
+        const locationStatus = document.querySelector("#location-status");
+        const useLocationButton = document.querySelector("#use-location");
+
+        locationSearch.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const area = locationInput.value.trim();
+            if (!area) {
+                locationInput.focus();
+                return;
+            }
+            locationStatus.textContent = "Searching near " + area + ". A verified local organisation directory is not connected yet.";
+        });
+
+        useLocationButton.addEventListener("click", function () {
+            if (!navigator.geolocation) {
+                locationStatus.textContent = "Location is not supported by this browser. Enter your city or area instead.";
+                return;
+            }
+
+            locationStatus.textContent = "Requesting your location...";
+            navigator.geolocation.getCurrentPosition(
+                function () {
+                    locationStatus.textContent = "Your location was found, but a verified local organisation directory is not connected yet.";
+                },
+                function () {
+                    locationStatus.textContent = "We couldn't access your location. Enter your city or area instead.";
+                }
+            );
+        });
+    </script>
+</body>
+</html>
